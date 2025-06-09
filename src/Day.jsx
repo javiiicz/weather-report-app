@@ -13,7 +13,8 @@ const Day = (props) => {
 
     return (
         <div className="day-container">
-            <h2>{props.date}</h2>
+            <h3>{props.date}</h3>
+            <p className="emoji">{props.emoji}</p>
             <p>{props.weather}</p>
             <p className={tempClass}>{props.temperature}°F</p>
         </div>
@@ -22,6 +23,7 @@ const Day = (props) => {
 
 Day.propTypes = {
     date: PropTypes.string.isRequired,
+    emoji: PropTypes.string.isRequired,
     weather: PropTypes.string.isRequired,
     temperature: PropTypes.number.isRequired
 }

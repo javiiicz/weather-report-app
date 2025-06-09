@@ -6,6 +6,7 @@ import data from "./data/data";
 
 function App() {
     const [count, setCount] = useState(0);
+    const apiKey = import.meta.env.VITE_APP_API_KEY;
 
     return (
         <>

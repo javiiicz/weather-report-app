@@ -1,7 +1,8 @@
 import React from "react";
 import ReactDOM from 'react-dom';
 import PropTypes from "prop-types";
-import "./Day.css"
+import "./Day.css";
+import SunMoon from "./SunMoon";
 
 const Day = (props) => {
     let tempClass =  ""
@@ -17,6 +18,7 @@ const Day = (props) => {
             <img className="weather-icon" src={`http://openweathermap.org/img/wn/${props.icon}.png`} alt={props.weather}></img>
             <p>{props.weather}</p>
             <p className={tempClass}>{props.temperature}°F</p>
+            <SunMoon sunrise={props.sunrise} sunset={props.sunset}/>
         </div>
     )
 }

@@ -45,7 +45,8 @@ function parseForecastData(data) {
     data.list.forEach(entry => {
         entries.push(parseEntry(entry))
     })
-    return entries
+
+    return {entries: entries, sunrise: (new Date(data.city.sunrise)).toLocaleTimeString('en-us'), sunset: (new Date(data.city.sunset)).toLocaleTimeString('en-us')}
 }
 
 function parseEntry (entry) {
@@ -54,7 +55,7 @@ function parseEntry (entry) {
         temperature: kelvinToFarenheit(entry.main.temp),
         weather: entry.weather[0].main,
         desc: entry.weather[0].description,
-        icon: entry.weather[0].icon
+        icon: entry.weather[0].icon,
     }
 }
 

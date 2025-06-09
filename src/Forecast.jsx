@@ -8,14 +8,17 @@ import PropTypes from "prop-types";
 const Forecast = (props) => {
 
     const preparedData = parseForecastData(props.data)
+    const entries = preparedData.entries
+    const sunrise = preparedData.sunrise
+    const sunset = preparedData.sunset
 
     return (
         <>
             <h2>Location: {props.data.city.name}</h2>
             <div className="forecast-container">
-                {preparedData.map(obj => {
+                {entries.map(obj => {
                     return (
-                        <Day date={obj.isoDate} icon={obj.icon} weather={obj.weather} temperature={obj.temperature}/>
+                        <Day date={obj.isoDate} icon={obj.icon} weather={obj.weather} temperature={obj.temperature} sunrise={sunrise} sunset={sunset}/>
                     )
                 })}
             </div>

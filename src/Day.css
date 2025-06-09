@@ -7,3 +7,11 @@
     border-radius: 10px;
     border-width: 1px;
 }
+
+.cold {
+    color: blue;
+}
+
+.hot {
+    color: red;
+}

@@ -1,5 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import "./SearchForm.css"
 
 const SearchForm = () => {
     const submitSearch = (event) => {

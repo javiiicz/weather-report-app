@@ -17,6 +17,9 @@
     color: red;
 }
 
-.emoji {
-    font-size: 35px;
+.weather-icon {
+    background-color: white;
+    border-radius: 50%;
+    border-style: solid;
+    border-width: 1px;
 }

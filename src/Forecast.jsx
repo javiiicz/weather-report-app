@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom';
 const Forecast = () => {
     return (
         <div className="forecast-container">
-            Weather Forecast woll go here
+            Weather Forecast will go here
         </div>
     )
 }

@@ -14,7 +14,7 @@ const Day = (props) => {
     return (
         <div className="day-container">
             <h3>{props.date}</h3>
-            <p className="emoji">{props.emoji}</p>
+            <img className="weather-icon" src={`http://openweathermap.org/img/wn/${props.icon}.png`} alt={props.weather}></img>
             <p>{props.weather}</p>
             <p className={tempClass}>{props.temperature}°F</p>
         </div>
@@ -23,7 +23,7 @@ const Day = (props) => {
 
 Day.propTypes = {
     date: PropTypes.string.isRequired,
-    emoji: PropTypes.string.isRequired,
+    icon: PropTypes.string.isRequired,
     weather: PropTypes.string.isRequired,
     temperature: PropTypes.number.isRequired
 }

@@ -1,5 +1,5 @@
 function kelvinToFarenheit(tempKelvin) {
-    let tempFarenheit = 1.8 * (tempKelvin - 273) + 32;
+    let tempFarenheit = Math.round(1.8 * (tempKelvin - 273) + 32);
     return tempFarenheit.toString();
 }
 
@@ -45,6 +45,7 @@ function parseForecastData(data) {
     data.list.forEach(entry => {
         entries.push(parseEntry(entry))
     })
+    return entries
 }
 
 function parseEntry (entry) {

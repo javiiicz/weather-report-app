@@ -11,7 +11,7 @@ const Forecast = (props) => {
 
     return (
         <>
-            <h2>Location: Menlo Park</h2>
+            <h2>Location: {props.data.city.name}</h2>
             <div className="forecast-container">
                 {preparedData.map(obj => {
                     return (

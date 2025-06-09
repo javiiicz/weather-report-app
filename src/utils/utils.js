@@ -38,3 +38,23 @@ function toLocaleDateString(isoDate) {
     return `${weekday}, ${month} ${date.getDate()}`;
 
 }
+
+
+function parseForecastData(data) {
+    let entries = [];
+    data.list.forEach(entry => {
+        entries.push(parseEntry(entry))
+    })
+}
+
+function parseEntry (entry) {
+    return {
+        isoDate: toLocaleDateString(entry.dt_txt),
+        temperature: kelvinToFarenheit(entry.main.temp),
+        weather: entry.weather[0].main,
+        desc: entry.weather[0].description,
+        icon: entry.weather[0].icon
+    }
+}
+
+export {parseForecastData}

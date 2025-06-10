@@ -2,10 +2,11 @@ import React from "react";
 import ReactDOM from "react-dom";
 import "./SearchForm.css"
 
-const SearchForm = () => {
-    const submitSearch = (event) => {
+const SearchForm = ({ onCityChange }) => {
+    const handleSubmit = (event) => {
         event.preventDefault();
         console.log("submitted");
+        onCityChange(event.target.elements.inputField.value)
         return;
     };
 
@@ -18,10 +19,10 @@ const SearchForm = () => {
     return (
         <form
             className="search-container"
-            onSubmit={submitSearch}
+            onSubmit={handleSubmit}
             onKeyDown={handleKeyPress}
         >
-            <input type="text" className="input-field"></input>
+            <input type="text" className="input-field" name="inputField"></input>
             <button type="submit" className="submit-button">Search</button>
         </form>
     );

@@ -7,6 +7,10 @@ import PropTypes from "prop-types";
 
 const Forecast = (props) => {
 
+    if (!props.data) {
+        return <p>Loading weather data...</p>;
+    }
+
     const preparedData = parseForecastData(props.data)
     const entries = preparedData.entries
     const sunrise = preparedData.sunrise
@@ -14,11 +18,11 @@ const Forecast = (props) => {
 
     return (
         <>
-            <h2>Location: {props.data.city.name}</h2>
+            <h2>📍 Location: {props.city ? props.city : "Udefined"}</h2>
             <div className="forecast-container">
-                {entries.map(obj => {
+                {entries && entries.map((obj, index) => {
                     return (
-                        <Day date={obj.isoDate} icon={obj.icon} weather={obj.weather} temperature={obj.temperature} sunrise={sunrise} sunset={sunset}/>
+                        <Day key={index} date={obj.isoDate} icon={obj.icon} weather={obj.weather} temperature={obj.temperature} sunrise={sunrise} sunset={sunset}/>
                     )
                 })}
             </div>

@@ -41,12 +41,29 @@ function toLocaleDateString(isoDate) {
 
 
 function parseForecastData(data) {
+    console.log(data)
+    
     let entries = [];
-    data.list.forEach(entry => {
-        entries.push(parseEntry(entry))
-    })
 
-    return {entries: entries, sunrise: (new Date(data.city.sunrise)).toLocaleTimeString('en-us'), sunset: (new Date(data.city.sunset)).toLocaleTimeString('en-us')}
+    // Get only one day
+    // 8 timestamps per day
+    for (let i = 0; i < data.list.length; i++) {
+        if (i % 8 == 0) {
+            entries.push(parseEntry(data.list[i]))
+        }
+    }
+
+    const date = new Date()
+    const offset = date.getTimezoneOffset() * 60 * 1000
+
+    let timezone = data.city.timezone;
+
+
+    let sunriseDate = new Date(data.city.sunrise * 1000  + offset + timezone * 1000)
+    let sunsetDate = new Date(data.city.sunset * 1000 + offset + timezone * 1000)
+
+
+    return {entries: entries, sunrise: sunriseDate.toLocaleTimeString('en-us'), sunset: sunsetDate.toLocaleTimeString('en-us')}
 }
 
 function parseEntry (entry) {
@@ -59,4 +76,13 @@ function parseEntry (entry) {
     }
 }
 
-export {parseForecastData}
+
+function parseCoords(data) {
+    console.log(data)
+    let lat = data[0].lat
+    let lon = data[0].lon
+
+    return {latitude: lat, longitude: lon}
+}
+
+export {parseForecastData, parseCoords}
